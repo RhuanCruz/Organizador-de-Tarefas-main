@@ -14,7 +14,7 @@ public class lerJson {
 
             Tarefa tarefa = null;
         try {
-            File arquivo = new File("C:/Users/dados.json");
+            File arquivo = new File("C:\\Users\\Usuário\\OneDrive\\Documentos\\GitHub\\Organizador-de-Tarefas-main\\OrganizadorDeTarefas\\src\\testes\\dados.json");
             Gson gson = new Gson();
 
             //ler o arquivo ja escrito na maquina
@@ -22,7 +22,7 @@ public class lerJson {
             reader = new JsonReader(new FileReader(arquivo));
 
             //transportar o arquivo lido para dentro das casses java
-            tarefa = gson.fromJson(reader, Tarefa.java);
+            tarefa = gson.fromJson(reader, Tarefa.class);
             ListadeTarefas.adicionarTarefa(tarefa);
             }
 

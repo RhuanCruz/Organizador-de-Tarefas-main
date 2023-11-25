@@ -1,5 +1,13 @@
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import entidades.ListadeTarefas;
 import entidades.Tarefa;
@@ -28,6 +36,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Path;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.control.CheckBox;
@@ -46,7 +55,11 @@ public class App extends Application{
     
 
     public static void main(String[] args) throws Exception {
-    launch(args);
+        try {
+            launch(args);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     
     }
 
@@ -55,7 +68,12 @@ public class App extends Application{
         
         ///logica de ler o arquivo json sempre que abrir o app///
 
-
+ // Verifica se o arquivo JSON existe
+        java.nio.file.Path path = Paths.get("C:\\Users\\Usuário\\OneDrive\\Documentos\\GitHub\\Organizador-de-Tarefas-main\\OrganizadorDeTarefas\\src\\testes\\dados.json");
+        if (Files.exists(path)) {
+            // Se o arquivo existe, lê as tarefas do JSON
+            lerTarefasDoJson();
+        }
 
 
         //Tela inicial
@@ -198,6 +216,7 @@ public class App extends Application{
 
         Stage TelaListagemDeTarefas = new Stage();
         ListView<Tarefa> listasPadrão = new ListView<>();
+        listasPadrão.getItems().addAll(lista);
         Button btVoltar = new Button("Voltar");
         // add items pra teste da interface
         listasPadrão.getItems().add(new Tarefa("Rhuan", "Teste", true, false));
@@ -261,6 +280,9 @@ public class App extends Application{
                 telaCriar.show();
         }
         });
+
+
+      
             
             btVoltar.setOnAction(new EventHandler<ActionEvent>(){
                 @Override
@@ -393,6 +415,20 @@ public class App extends Application{
                 }
             }
         });
+    }
+
+    private void lerTarefasDoJson() {
+        try {
+                Gson gson = new Gson();
+    
+                // Lê o arquivo JSON e converte para uma lista de Tarefas
+                List<Tarefa> tarefas = gson.fromJson(new FileReader("C:\\Users\\Usuário\\OneDrive\\Documentos\\GitHub\\Organizador-de-Tarefas-main\\OrganizadorDeTarefas\\src\\testes\\dados.json"), new TypeToken<List<Tarefa>>() {}.getType());
+    
+                // Adiciona as tarefas lidas à lista
+                lista.addAll(tarefas);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
     }
 }
 
