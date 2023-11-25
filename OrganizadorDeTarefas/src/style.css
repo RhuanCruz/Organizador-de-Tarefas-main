@@ -1,0 +1,38 @@
+/* Estilo para um botão padrão */
+.button {
+    -fx-background-color: #c09f83;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+/* Estilo para um botão quando o mouse passa por cima (hover) */
+.button:hover {
+    -fx-background-color: rgb(85, 5, 5);
+}
+
+.rounded-button {
+    -fx-background-color: #301b03;
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-font-size: 11px;
+    -fx-padding: 10 20;
+    -fx-background-radius: 20;
+}
+
+.rounded-buttonPRINCIPAL {
+    -fx-background-color: #301b03;
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-font-size: 18px;
+    -fx-padding: 10 20;
+    -fx-background-radius: 20;
+}
+
+.table-cell:selected {
+    -fx-background-color: #001c2e;
+    -fx-text-fill: white;
+}
+
+.label-custom {
+    -fx-text-fill: #ffffff;
+}
+
+
