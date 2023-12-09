@@ -280,11 +280,7 @@ public class App extends Application{
                 telaCriar.show();
         }
         });
-
-
-      
-            
-            btVoltar.setOnAction(new EventHandler<ActionEvent>(){
+        btVoltar.setOnAction(new EventHandler<ActionEvent>(){
                 @Override
                 public void handle(ActionEvent event){
                     TelaListagemDeTarefas.close();
